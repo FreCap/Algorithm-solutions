@@ -1,0 +1,484 @@
+##LEZIONE 4##
+
+// O(sqrt(N))
+
+int checkSePrimo(int n){
+    if(n%2==0) return false;
+    for(int i=3;i<sqrt(n);i+=2)
+        if(n%i==0)
+            return false;
+    return true;
+}
+
+
+// O(N*sqrt(N))
+
+//NAIVE
+for(int i=0;i<n;i++)
+    checkSePrimo(n);
+    
+
+int numeri[N];
+for(int i=2; i<N; i++)
+    if(numeri[i]==0)
+        for(int k=2; k*i<N; k++)
+            numeri[i*k]=1;
+        
+for(int i=2; i<N; i++)
+    if(numeri[i]==0) primo
+    
+    
+// Sieve of Eratosthenes
+int numeri[N];
+for(int i=2; i<N; i++)
+    for(int k=i; k*i<N; k++) // quelli inferiori a 
+        numeri[i*k]=1;
+        
+## STRINGA ##
+
+char ciao[10];
+
+for(int i=0; i<10; i++)
+    ciao[i] = getchar();
+    
+for(int i=0; i<10; i++)
+    scanf("%c", ciao+i);
+
+for(int i=0; i<10; i++)
+    cin >> ciao[i];
+    
+scanf("%s", ciao);
+
+// prende tutto fino allo spazio
+cin >> ciao;
+
+
+#include <string>
+
+string ciao;
+// è esattamente come un vector
+
+
+.begin(); // iteratore iniziale
+.end();  // iteratore finale
+.size() -> length() // lunghezza della stringa
+
+string ciao = "il mio nome è pincopallo";
+.substr(posIniziale[, lunghezza]);  // iteratore iniziale, secondo parametro opzionale, se non viene specificato
+									// restituisce la stringa dalla pos iniziale fino alla fine
+		string ciao;
+		cin >> ciao; // miaParola
+		cout << ciao.substr(4,2); // stampa ar
+		cout << ciao.substr(4); // stampa arola
+.compare(altraStringa); // restiusce 0, se le stringhe sono identiche
+		string ciao, ciao2;
+		cin >> ciao >> ciao2;
+		if(ciao.compare(ciao2)==0)
+			cout << "le stringhe inserite sono identiche"; 
+.find(stringa); // Se trova la stringa, ti restitusice la posizione in cui inizia
+				// sennò ti restituisce  string::npos ( -1 )
+		string ciao;
+		int pos;
+		cin >> ciao;
+		if((pos = ciao.find("asd"))!= string::npos) // oppure indicabile anche con string::npos
+			cout << "la stringa è stata trovata in posizione " << pos;
+
+
+char stringhe[10][1000];
+string stringhe[10];
+
+for(int i=0; i<10; i++)
+    cin >> stringhe[i];
+
+sort(stringhe.begin(), stringhe.end()); // sort in algorithm
+
+
+## CONVERSIONE DA MAIUSCOLA A MINUSCOLA ##
+
+char è trattato esattamente come un intero
+
+int mioCarattere = 'a';
+
+M->m 
+
+char A='A'; // i caratteri singoli vanno tra singolo apice, doppio è la stringa
+
+
+'A'-('A'-'a')='a'
+'H'-('A'-'a')='h'
+A-='A'-'a';
+A+=-('A'-'a');
+
+
+char a='a';
+a+=-('a'-'A')
+
+if('a'<=a && 'z'>=a) // minuscolo
+
+if('0'<=a && '9'>=a) // numero
+
+
+### PAIR ###
+
+
+
+//NAIVE
+1 7 
+2 4 
+3 8
+4 3
+5 2
+6 7
+7 8
+int id[7],v[7];
+
+#include <utility>
+
+#define N 10
+pair<int,int> array[N];
+
+for(int i=0; i<N; i++)
+    cin >> array[i].second >> array[i].first;
+
+
+// PRIMA ordina first, in caso ambiguità, ordina DOPO anche i second
+sort(array.begin(), array.end());
+
+
+for(int i=0; i<N; i++)
+    cout << array[i].second;
+    
+aadsa 5
+asiodjasio 3
+asjondioas 7
+aasodnasj 7
+// DIFFERENZA
+pair<int, string> array[N]
+....
+
+// ordiniamo Dec i punteggi, e cre i nomi
+
+int cmp(const pair<int,string> &a, const pair<int,string> &b){
+    if(a.first==b.first)
+        return a.second < b.second;
+    return a.first > b.first;
+}
+
+int main(){
+    // prendiamo input etc..
+    
+    sort(array.begin(), array.end(), cmp); // cmp parametro opzionale
+    
+    // ..stampare
+}
+
+
+// problema regionali 2005 Il nobile chimico
+
+
+vector<pair<int, string> > v;
+
+//RICORDARSI LO SPAZIO DOPO string> 
+cout << "asd"
+cin >> asda; // >> è un simbolo RISERVATO di stream, quindi non possiamo usarlo
+
+
+//primo modo, non consiglaito
+pair<int, string> mioPair;
+mioPair.first=12;
+mioPair.second="asdasd";
+v.push_back(mioPair);
+
+//met
+v.push_back(make_pair(12, "asdasd")); 
+
+
+### COMPLESSITA ###
+
+
+MAX op/s = 300.000.000 = 3*10^8
+
+
+N^N MAX 8.9
+2^N funzione N=~28
+
+sort(N*logN)
+
+// O(1)
+int f(int N){
+    return N*2;
+}
+
+// O(4) -> O(1)
+int f(int N){
+    N/=3;
+    N+=43;
+    N%=1000007:
+    return N*2;
+}
+
+
+// O(N)
+for(int i=0; i<N; i++)
+    cin >> mioNumero[i];
+
+
+
+// O(N)*O(4) -> O(N)*O(1) -> O(N)
+for(int i=0; i<N; i++)
+    f(i);
+
+
+// O(N^2)
+for(int i=0; i<N; i++)
+    for(int k=0; k<N; k++)
+        O(1)
+
+
+// O(N^2/2) -> O(N^2)
+for(int i=0; i<N; i++)
+    for(int k=0; k<N/2; k++)
+        O(1)
+
+
+// somma delle sommatorie che hanno n elemnti 
+// O(N(N+1)/2) -> O((N^2+N)/2) -> O(N^2/2) -> O(N^2)
+int sum = 0:
+for(int i=0; i<N; i++)
+    for(int k=0; k<i; k++)
+        sum+=i+1;
+
+
+// O(n^3)
+for(int i=0; i<N; i++)
+    for(int k=0; k<i; k++)
+        for(int j=0; j<N; j++)
+            O(1);
+            
+
+// O(2^N)
+
+serie di N oggetti, N = 4 
+0 0 0 0
+0 0 0 1
+0 0 1 0
+0 0 1 1
+0 1 0 0
+0 1 0 1
+0 1 1 0
+0 1 1 1
+   
+      i
+
+int stringaFinale[N];
+void f(int i, int valore){
+    stringaFinale[i]=valore;
+    if(i==N-1){
+        for(int i=0; i<N; i++)
+            cout << stringaFinale[i] << " ";
+        cout << endl;
+    }else{
+        f(i+1,0);
+        f(i+1,1);
+    }
+}
+
+int main(){
+    f(0,0);
+    f(0,1);
+}
+
+
+
+
+
+### SHORTCUT ###
+for while if  non per forza le graffe {}
+
+int main(){
+    {
+        int mioVar = 0;
+        
+    }
+    
+    {  
+        for(int i=0;i<N;i++)
+            O(1)
+    }        
+     
+     
+    for(int i=0;i<N;i++)
+        ciao++;
+        
+    for(int i=0;i<N;i++){
+        ciao++;
+    }
+    
+    
+    asd =6; sadas = 5;
+    if(asd==4)
+        if(sadas==5)
+            cout << "ciao"
+        else
+            cout << "caio";
+            
+    // NON STAMPA NULLA!!!!
+    
+}
+
+
+
+depth first search
+
+vector<int> G[N];
+int visitati[N];
+
+int dfs(int nodo){
+    if(visitato[nodo]) return 0; // se è già stato visitato, usciamo.. non vogliamo cicli infiniti
+    visitato[nodo]=1; // lo visitiamo
+    
+    for(int i=0; i<G[nodo].size(); i++){
+        int nodoUscente = G[nodo][i];
+        dfs(nodoUscente);
+    }
+}
+
+
+
+
+
+vector<int> G[N];
+int visitati[N];
+int bravura[N]
+int dfs(int nodo){
+    if(visitato[nodo]) return 0; // se è già stato visitato, usciamo.. non vogliamo cicli infiniti
+    visitato[nodo]=1; // lo visitiamo
+    int b = bravura[nodo];
+    for(int i=0; i<G[nodo].size(); i++){
+        int nodoUscente = G[nodo][i];
+        b+=dfs(nodoUscente);
+    }
+    return b;
+}
+
+
+## LICENZIAMENTI ##
+ 
+vector<int> G[N];
+int bravura[N]
+int dfs(int nodo, int minima){
+    // essendo un grafo senza cicli, non serve il controllo sul visitato!
+    int b = bravura[nodo];
+    int licenziamenti= 0;
+    if(b>minima) licenziamenti++;
+    if(b<minima) minima = b;
+    for(int i=0; i<G[nodo].size(); i++){
+        int nodoUscente = G[nodo][i];
+        licenziamenti+=dfs(nodoUscente, minima);
+    }
+    return licenziamenti;
+}
+
+int main(){
+    int N, t1,t2;
+    cin >> N;
+    for(int i=0;i<N;i++){
+        cin >> t1 >> t2;
+        G[t1].push_back(t2);
+        //G[t2].push_back(t1); se sono bidi devo scommentare
+    }
+    cout << dfs(0, bravura[0])
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+           
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+        
+        
+        
+        

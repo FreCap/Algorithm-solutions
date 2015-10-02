@@ -1,0 +1,124 @@
+## Lezione 6 ##
+
+
+# Tipi di problema # 
+#ad hoc 
+generalmente facilissimi, oppure impossibili. alle IOI sono impossibili
+- quasipal
+
+#grafi
+- dfs 95% modificata in una qualche maniera
+- 5% dijkstra/bfs (breadth first search)
+
+#greedy 
+hai diversi step nel problema, e ad ogni passaggio devi se o se non proseguire in una determinata direzione, quindi prendere una decisione
+
+quasi sempre devi ordinare per qualche parametro (SORT CI SARA SEMPRE)
+
+
+#programmazione dinamica, dp (dynamic programming)
+hai dei sotto problemi, che dobbiamo riuscire a risolvere prima di prendere la decisione finale per risolvere l'intero problema
+
+
+## Nimbus ##
+
+1 5
+3 7
+9 11
+10 12
+6 13
+
+1  2  3  4  5  6  7  8  9 10  11 12 13
+XXXXXXXXXXXX                          
+      XXXXXXXXXXXX                   
+                        XXXXXX       
+                          XXXXXXX    
+               XXXXXXXXXXXXXXXXXXXXX
+               
+1 5
+3 7
+5 11
+10 12
+6 13
+
+1  2  3  4  5  6  7  8  9 10  11 12 13
+XXXXXXXXXXXX                          
+         XXXXXXXXX                   
+                        XXXXXX       
+                          XXXXXXX    
+               XXXXXXXXXXXXXXXXXXXXX
+                XXXXXXXX
+               
+## ORDINO PER LA FINE ##
+1  2  3  4  5  6  7  8  9 10  11 12 13
+XXXXXXXXXXXX                          
+         XXXXXX                    
+                XXXXXXXX               
+                        XXXXXX       
+                          XXXXXXX    
+               XXXXXXXXXXXXXXXXXXXXX
+               
+ordino per la fine e poi prendo sempre il migliore O(n+nlongn) -> O(nlogn)
+
+vector<pair<int, int> > // first è la fine perchè l'ordine avviene per il first
+
+
+
+## Il nobile chimico ##
+
+
+13 B
+12 B
+8  A
+5  A
+4  A
+2  A
+1  A
+
+#define MAXN 100
+pair<int, int> barili[MAXN]; // q,posizione
+int A[MAXN],B[MAXN];
+
+int main(){
+    int N,Aq,Bq;
+    cin >> N >> Aq >> Bq;
+    for(int i=0;i<N;i++){
+        cin >> barili[i].first;
+        barili[i].second=i;
+    }
+    
+    sort(barili, barili+N);
+    
+    for(int i=0;i<N && Aq!=0;i++){
+        Aq-=barili[i].first;
+        A[barili[i].second]=barili[i].first;
+    }
+    
+    for(int i=N-1; i>=0 && Bq!=0;i--){
+        Bq-=barili[i].first;
+        B[barili[i].second]=barili[i].first;
+    }
+  
+    for(int i=0;i<N;i++)
+        cout << A[i] << " " << B[i] << endl;
+        //pritnf("%d %d\n", A[i], B[i]);
+   
+}
+
+
+#DP
+
+int dp[N];
+int fib(int p){
+    if(p<=2) return 1;
+    if(dp[p]!=-1) return dp[p];
+    return dp[p] = fib(p-1)+fib(p-2);
+}
+
+
+
+
+
+
+
+

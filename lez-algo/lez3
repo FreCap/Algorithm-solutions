@@ -1,0 +1,223 @@
+
+## VETTORI ##
+Reference: http://www.cplusplus.com/reference/vector/vector/
+
+La differenza con gli array:
+ - una volta dichiara la dimensione, non puoi più modificarla, nei vettori si
+ - tutte le funzioni fondamentali, te le devi creare da solo ( trova il valore, ordina etc... )
+
+#include <vector>
+
+// dichiarazione
+vector<TIPO> nomeVettore;
+vector<int> vettoreDiInteri;
+
+Le funzioni più importanti sono:
+mioVect[x] - per accedere alla x-esima posizione, come negli array
+mioVect.at(x) - sinonimo di quella precedente
+
+mioVect.size() - la dimensione corrente del vettore
+	//mentre nell'array dovrai avere una variabile che te la contiene ( quella è
+	// e rimane fissa ), mentre nei vettori l'hai disponibile on the fly
+
+mioVect.push_back(valore) - aggiunge un valore alla fine del vettore
+
+I vettori non ragionano esattamente secondo i puntatori, ma ne hanno una loro versione
+la loro versione si chiama "iteratori"
+
+mentre il puntatore iniziale negli array, era semplicemente "array+0"
+nei vettori, è invece mioVect.begin()
+
+la posizione finale dell'array era "array+N"
+nei vettori mioVect.end()
+
+Gli iteratori sono importantissimi per tutte le funzioni accessorie
+sort(mioVect.begin(), mioVect.end());
+5 7
+reverse(mioVect.begin(), mioVect.end()); 
+
+
+// cerca il valore 30 all'interno del vettore, se non lo trova restituisce
+	mioVect.end()
+it = find(mioVect.begin(), mioVect.end(), 30); // ultimo parametro cosa vogliamo andare a cercare
+
+1) la posizione attuale del valore 1 5 8 30 7
+2) la posizione finale 1 5 8 5 7
+
+
+1 5 8 30 7
+if(it!=mioVect.end()){
+	printf("valore trovato");
+	mioVect.erase(it);
+}else
+	printf("non trovato");
+
+for(int i=0; i<mioVect.size();i++)
+	printf("%d ", mioVect[i]);
+  
+        i
+b       e
+1 1 1 1 
+
+vector<int> mioVect;
+vector<int>::iterator it;
+for(it = mioVect.begin(); it != mioVect.end(); mioVect++)
+	printf("%d ", *it);
+
+1 1 1 1 1 1 1 1 
+
+for(int i=0; i < mioVect.size(); i++)
+	printf("%d ", mioVect[i]);
+
+// scorre dall'ultimo al primo
+for(it = mioVect.rbegin(); it != mioVect.rend(); mioVect++)
+	printf("%d ", *it); // passi dall'iteratore al valore
+
+
+
+
+//libreria
+
+#include <algorithm>
+
+sort(puntatoreInizio, puntatoreFine)
+
+int array[N];
+sort(array, array+N);
+sort(vect.begin(), vect.end());
+
+
+& valore -> puntatore
+* puntatore -> valore
+
+// NO ASSOLUTAMENTE NO
+sort(&array[0], &array[N])
+
+find(puntatoreInizio, puntatoreFine, valore);
+
+// libreria string.h
+
+N
+[0 0 0 7 8] 7 4 7 8 56 7 7 57  65 [5] 665 7 6 576 7 66 7
+
+int main(){
+    int N = 5;
+    int array[N];
+
+    for(int i=0; i< N; i++)
+        printf("%d", array[i]);
+    // 0 0 0 7 8
+    
+    
+    for(int i=0; i< N; i++)
+        array[i]=0;
+    
+}
+
+memset(posIniziale, valore, dimensione);
+memset(array, 0, sizeof array);
+
+// funzione imposta ogni byte uguale al valore che gli abbiamo detto
+
+int = 4byte = 32bit = 
+
+2^10 = 1024
+1024*1024*1024 * 2 * 2 = 4.000.000.000
+
+00000000 00000000 00000000 00000000
+
+memset(array, 1, sizeof array);
+00000001 00000001 00000001 00000001 != 1 
+
+memset(array, -1, sizeof array);
+11111111 11111111 11111111 11111111
+
+
+## funzioni matematiche ##
+
+#include <math.h> // significa che è una  libreria del c
+
+ceil(val)   // arrotonda sempre per eccesso, ceil(0.000001) => 1
+log10(val)  // logaritmo base 10 di un numero, log10(10000000) == 7, è il numero di 0 che possiede un numero
+            // log10(512121) => ~5,~
+            
+sqrt(val)   // radice quadrata
+pow(base, esponente)  ipotenusa
+
+abs(val)    // absolut vodka
+
+
+
+##################### DEFINE ##################
+
+
+
+## ISTRUZIONI AL PREPROCESSORE ##
+Per compilare ed eseguire un programma ci sono diverse fasi:
+Sono quelle istruzioni che NON vengono eseguite dal programma, ma vengono eseguite
+dal compilatore:
+ - può includere delle librerie all'interno del codice ( #include <string> )
+ - sostituire del codice con dell'altro codice, prima di essere definitivamente 
+	compilato
+ - verificare delle condizioni per decidere quali parti di codice compilare.
+ - commenti
+
+## COSTANTI ##
+
+// in cima al programma dopo gli include
+#define NOMECOSTANTE VALORECOSTANTE
+#define N_MAX 999999
+
+per convenzione vengono scritte solo in caratteri maiuscoli, e _ al posto dello spazio
+
+// nel main
+if(miaVar > N_MAX)
+	printf("Numero non gestibile");
+else
+	printf("tutto a posto");
+
+
+// quando viene dato in pasto al compilatore:
+// quindi le costanti vengono sostituite con il valore ( tutte le N volte che vengono
+	ritrovate all'interno del codice )
+
+// nel main
+if(miaVar > 999999)
+	printf("Numero non gestibile");
+else
+	printf("tutto a posto");
+
+
+// Es 2 999 3 997 
+
+#define MASSIMO 1000
+int main(){
+	int array[MASSIMO];
+	for(int i=0; i<MASSIMO; i+=2){
+		array[i] = MASSIMO - i - 1;
+		array[i+1] = i;
+	}
+	
+	for(i=0; i<MASSIMO; i++)
+		printf("%d ", *(array + i)); // array[i]
+}
+
+// Esempio di flow di compilazione
+Sources .cpp
+-> li dai in pasto al compilatore
+-> sostituisce le istruzioni del preprecessore (#define, #include, etc..)
+-> compila il programma in codice macchina
+-> viene fuori l'eseguibile che possiamo aprire
+
+
+
+
+
+
+ 
+
+
+
+
+
+

@@ -1,0 +1,364 @@
+
+C++
+
+Definito linguaggio basso livello:
+- gestire memoria
+
+Un linguaggio di alto livello invece:
+ - gestione automatica della memoria.
+
+# Processo base da codici sorgente a eseguibile
+- scrive i sources (codice sorgente)
+- compilatore che crea il pacchetto da eseguire
+- eseguibile e lo apriamo. Il computer cerca in automatico la funzione main dichiarata all'interno del programma e parte da li
+
+
+## Entità fondamentali: ##
+- variabili
+- funzioni
+- cicli
+
+
+Variabili contenitori:
+
+
+Dichiarazione di una variabile:
+ - sceglie una posizione di memoria libera
+ - associa quella porzione di memoria alla posizione che ha trovato
+   alla variabile
+
+Diversi tipi di variabili:
+ - int, composto da 4byte, può assumere 2^32, circa 4mld
+		tra -2^31 e 2^31 ( il primo bit considera il segno )
+ - char, composto 1byte, 256 valori, e con la gestione del segno
+	 	tra -128 e 127
+ - float, composto da 4byte, gestisce valori 
+		tra 3,4 x 10^-38 e 3,4*10^38
+		con 7 cifre significative
+
+# ESEMPIO Overflow
+char i = 127;
+i+=1; // -128
+
+//overflow
+i= 412831298312983129812; // fa tanti giri finché non finisce
+
+
+Primo programma:
+
+//includiamo delle librerie
+#include <stdio.h> // Standard Input Output, funzioni per gestire la console
+#include <stdlib.h> // contiene altre funzioni standard
+
+// Dichiarato una funzione main: che sarà la prima ad essere eseguita
+int main(){
+    // inseriamo il codice
+    pritnf("hello world!");
+    
+    return 0;
+}
+
+
+
+Secondo programma, dichiarazione di variabile:
+
+#include <stdio.h> 
+#include <stdlib.h> 
+
+
+int main(){
+    
+    // tipo nomeVariabile = valore;
+    int mioNumero = 4;
+    int mioNumero2 = 1345234243;
+
+    pritnf("hello world!");
+    return 0;
+}
+
+
+## Operazioni fondamentali ##
+
+Aritmetico:
++ - / *
+% modulo (resto della divisione)
+
+++ incremento di uno
+-- decremento di uno
+
+Operazione Matematica + assegnamento
++=
+-=
+/=
+*=
+%=
+
+asd = asd +1
+asd +=1
+
+Assegnamento
+= 
+
+a = a+1 // prima si fa l'evalute della funzione a dx, e poi si assegna
+
+Comparazione
+< > <= >=
+
+Eguaglianza e diseguaglianza
+== !=
+
+
+int numero = 1;
+
+numero = 4+2;
+numero = 7+(2+2)*18; // 79
+numero = 57/2; // 28 SOLO PARTE INTERA
+
+Terzo programma, richiamare una funzione:
+
+#include <stdio.h> 
+#include <stdlib.h> 
+
+
+int main(){
+    
+    
+    // nomeFunzione(primoArgomento, secondoArgomento,...);
+    // stringhe incluse nelle doppie virgolette
+    printf("hello world!");
+    return 0;
+}
+
+## FUNZIONI PER SCRIVERE A SCHERMO (OUTPUT) ##
+
+printf("%d", c);
+
+la funzione printf è composta da:
+	- 1° argomento: stringa che contiene il formato in cui stampare
+		le informazioni
+	- n successivi argomenti, sono i valori da stampare
+
+
+// printf semplice senza argomenti
+printf("Hello World!");
+
+// printf complesso:
+all'interno della stringa di testo, abbiamo delle combinazioni speciali
+di caratteri che iniziano sempre con "%"
+- %d stampa la variabile come se fosse un intero
+- %c stampa la var come se fosse un carattere
+- %f stampa la var come se fosse un float
+
+
+int anno = 1993;
+char c='C'; // quando assegnate un carattere a un char va sempre su ''
+printf("Sono nato nel %d e il mio congome inizia con la %c", anno, c)
+printf("%d+%d",anno, anno); // 1993+1993
+pritnf("%d", 3);
+pritnf("%d", mioNumero);
+pritnf("Il numero dei miei anni è %d, invece il tuo è %d", 4, 21);
+
+
+parametri opzionali:
+ - %10d  => non mi importa quanto sia lungo la var, ma devi stampare sempre di X caratteri
+ - %010d => riempire con gli 0 invece che con gli spazi
+ - \n    => per andare a capo
+
+
+
+## SCANF ##
+
+int anni;
+pritnf("Dimmi quanti anni hai: ");
+scanf("%d", &anni); 
+
+
+int primo, secondo; // se hanno tutti lo stesso tipo, possiamo andare a dichiarare le variabili attraverso la virgola
+pritnf("Dimmi i primi due numeri che ti vengono in mente: ");
+scanf("%d%d", &primo, &secondo);
+
+1) le combinazioni speciali sono le stesse ( %d, %c, %f ) del printf
+2) gli argomenti successivi al primo, sono variabili, a cui assoceremo
+	il valore inserito dall'utente
+3) non gli possiamo passare "normalmente" la variabile, ma gli passiamo
+	il "puntatore" (posizione in memoria) della variabile.
+	Avendo la variabile, per passare al suo puntatore, aggiungiamo
+	& prima della stessa ( es. &eta )
+
+ESEMPIO PRATICO
+int a;
+scanf("%d", &a);
+printf("%d", a);
+
+
+int main(){
+    int mioNumero;
+    printf("dammi un numero e ti sommo 5");
+    scanf("%d", &mioNumero);
+    
+    mioNumero = mioNumero+5; // mioNumero += 5;
+    printf("il tuo numero è %d", mioNumero);
+    
+    return 0;
+}
+
+
+
+## Funzioni ## 
+
+tipo nomeFunzione(tipo primoArgomento, tipo secondoArgomento,...){
+    tipo responso;
+    return responso;
+}
+
+
+float meta(int mioNumero){
+    float responso;
+    responso = mioNumero;
+    responso /= 2;
+    return responso;
+}
+
+
+float meta(int mioNumero){
+    float responso = mioNumero;
+    responso /= 2;
+    return responso;
+}
+
+
+float meta(int mioNumero){
+    float responso = mioNumero;
+    return responso/2;
+}
+
+
+
+float meta(int mioNumero){
+    return ((float)mioNumero)/2;
+}
+
+# tipo NULLO
+
+void scriviCiao(){
+    printf("ciao");
+}
+
+
+## CASTING ##
+
+// automatico
+float numero = 5;
+
+float numero = (float)5;
+
+// manuale
+
+int numero = 5.5;
+int numero = (int)5.5;
+
+int numero = (5 * 5.5); // prima fa l'operazione, poi fa il casting
+
+int numero = 5/3*2; // esegue le prime 2, ed essendo entrambi interi, tronca, poi moltiplica
+
+
+int a = 2;
+int b;
+
+b = a; // 2
+b*= 2; // 4
+b*= a; // 8
+a = a*b*a; // 32
+
+
+
+## CICLI ##
+
+// INIZIALIZZAZIONE; CONDIZIONE; OPERAZIONE FINE CICLO
+for(int i=0; i<100; i++){
+    printf("%d", i);
+}
+
+
+while(CONDIZIZIONE){
+    //MIO CODICE
+}
+
+for(;;) // ciclo infinito for
+
+# for con WHILE
+
+//INIZIALIZZAZIONE
+int i=0;
+while(i<100){
+    printf("%d", i);
+    
+    //OPERAZIONE FINE CICLO
+    i++;
+}
+
+
+
+NB: ogni numero diverso da 0 E' SEMPRE VERO
+
+for(int i=0;;i++){
+    printf("%d\n",i);
+}
+
+
+
+
+
+## CONDIZIONI SEMPLICI
+
+int main(){
+    
+    if(CONDIZIONE){
+        printf("vera");
+    }
+
+}
+
+
+if(CONDIZIONE){
+    printf("vera");
+}else{
+
+}
+
+if(CONDIZIONE){
+        printf("vera");
+}else if(SECONDACONDIZIONE){
+
+}else{
+
+}
+
+
+
+ESEMPIO
+
+int main(){
+    int i = 2300000000;
+    if(i<3){
+        printf("falsa");
+    }else if(i>= 18){
+        printf("sicuramente falsa");
+    }else{
+        printf("vera");
+    }
+}
+
+NBBenissimo: l'indentatura è importante, ossia il numero di spazi
+che bisogna mettere prima di ogni riga. Tutte le volte che si usa una
+graffa e si va a capo, il codice successivo dovrà avere 4 (QUATTRO)
+spazi in più rispetto alla riga precedente prima di scrivere ogni
+comando.
+Questa pratica è utile per: 
+- capire meglio il proprio codice
+- non fare errori
+
+NB: Dopo le graffe non ci va MAI il punto e virgola (;)
+Dopo la func for(;;) non ci va mai il punto e virgola
+
+
